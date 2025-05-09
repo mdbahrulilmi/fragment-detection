@@ -1,13 +1,10 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Threading.Tasks;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform.Storage;
-using DynamicData;
+using Avalonia.VisualTree;
 
 namespace fragment_detection.Views
 {
@@ -21,6 +18,30 @@ namespace fragment_detection.Views
         {
             OpenFileButton_Clicked(sender, e);
         }
+
+        private void FragmentButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (!UploadedImage.IsVisible)
+            {
+                return;
+            }
+
+            var resultView = new ResultView();
+
+            if (this.Parent is Avalonia.Controls.Window window)
+            {
+                window.Content = resultView;
+            }
+            else
+            {
+                var mainWindow = this.FindAncestorOfType<Avalonia.Controls.Window>();
+                if (mainWindow != null)
+                {
+                    mainWindow.Content = resultView;
+                }
+            }
+        }
+
 
         private async void OpenFileButton_Clicked(object sender, RoutedEventArgs args)
         {
@@ -46,7 +67,7 @@ namespace fragment_detection.Views
                     UploadPlaceholder.IsVisible = false;
                     UploadMark.IsVisible = false;
                     UploadText.IsVisible = false;
-
+                    FragmentButton.Background = new SolidColorBrush(Color.Parse("#3B89FF"));
                     TakePhoto.Text = "Unggah Foto";
 
                     //string projectDir = AppContext.BaseDirectory;

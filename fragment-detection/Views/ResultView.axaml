@@ -1,0 +1,57 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500"
+             x:Class="fragment_detection.Views.ResultView"
+             xmlns:local="clr-namespace:fragment_detection.Views;assembly=fragment-detection">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<local:HeaderView Grid.Row="0"/>
+
+		<ContentControl Name="ContentArea" Grid.Row="1">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+
+				<local:Card Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,-30"/>
+
+				<Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+
+					<Button
+                        Click="SaveButtonClick"
+                        Grid.Row="0"
+                        HorizontalAlignment="Center"
+                        Foreground="White"
+                        Background="#3B89FF"
+                        FontWeight="SemiBold"
+                        Padding="8"
+                        Content="Simpan Hasil"
+                        Margin="0,0,0,5"/>
+
+					<Button
+                        Click="DeleteButtonClick"
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        BorderBrush="#FF0000"
+                        Foreground="#FF0000"
+                        Background="White"
+                        FontWeight="SemiBold"
+                        Padding="8"
+                        Content="Hapus"
+                        Margin="0,5,0,0"/>
+				</Grid>
+			</Grid>
+		</ContentControl>
+	</Grid>
+</UserControl>

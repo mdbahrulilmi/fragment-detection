@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="fragment_detection.Views.DetailView"
+			 xmlns:local="clr-namespace:fragment_detection.Views;assembly=fragment-detection">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<local:HeaderView Grid.Row="0"/>
+
+		<ContentControl Name="ContentArea" Grid.Row="1">
+
+			<Grid Grid.Row="1">
+				<Border Height="400" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+					<Grid>
+						
+						<local:Card />
+						
+						<Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="0">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="Auto"/>
+							</Grid.RowDefinitions>
+
+							<Button
+                                HorizontalAlignment="Center"
+                                BorderBrush="#FF0000"
+                                Foreground="#FF0000"
+                                Background="White"
+                                FontWeight="SemiBold"
+                                Padding="8"
+                                Grid.Row="0"
+                        >Hapus</Button>
+						</Grid>
+					</Grid>
+				</Border>
+			</Grid>
+
+		</ContentControl>
+	</Grid>
+</UserControl>

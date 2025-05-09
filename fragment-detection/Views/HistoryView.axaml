@@ -1,0 +1,158 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:fragment_detection.Views;assembly=fragment-detection"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             x:Class="fragment_detection.Views.HistoryView">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<local:HeaderView Grid.Row="0"/>
+
+		<ScrollViewer Grid.Row="1" Padding="40">
+			<StackPanel Spacing="24">
+				<Button Content="← Kembali"
+                        Width="110"
+                        Padding="8,4"
+                        Background="White"
+                        BorderBrush="#C0C0C0"
+                        Foreground="#333"/>
+
+				<TextBlock Text="Riwayat Pengujian"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Margin="0,10,0,10"/>
+
+				<Border BorderBrush="#DDD"
+                        BorderThickness="1"
+                        CornerRadius="12"
+                        Background="White"
+                        Padding="16">
+					<StackPanel Spacing="12">
+						<Grid ColumnDefinitions="3*,2*,2*,2*,2*" Margin="0,0,0,6">
+							<TextBlock Text="Pengujian" FontWeight="Bold"
+									   HorizontalAlignment="Center"/>
+							<TextBlock Text="Tanggal" Grid.Column="1" FontWeight="Bold" HorizontalAlignment="Center"/>
+							<TextBlock Text="Waktu" Grid.Column="2" FontWeight="Bold" HorizontalAlignment="Center"/>
+							<TextBlock Text="Jumlah Fragmen" Grid.Column="3" FontWeight="Bold" HorizontalAlignment="Right"/>
+						</Grid>
+
+						<StackPanel Spacing="8">
+
+							<Border BorderBrush="#EEE" BorderThickness="0,1,0,0" Padding="0,10">
+								<Grid ColumnDefinitions="3*,2*,2*,2*,2*" VerticalAlignment="Center">
+									<StackPanel Grid.Column="0" HorizontalAlignment="Center">
+										<Border Width="60" Height="60"
+                                                CornerRadius="8"
+                                                BorderBrush="#CCC"
+                                                BorderThickness="1"
+                                                ClipToBounds="True"
+                                                HorizontalAlignment="Center">
+											<Image Source="avares://fragment-detection/Assets/dummy.png"
+                                                   Stretch="UniformToFill"/>
+										</Border>
+										<TextBlock Text="54-3/BBSPJIKMN/JU-02/2025"
+                                                   FontWeight="Bold"
+                                                   TextWrapping="Wrap"
+                                                   TextAlignment="Center"
+                                                   HorizontalAlignment="Center"
+                                                   MaxWidth="130"
+                                                   Margin="0,8,0,0"/>
+									</StackPanel>
+
+									<TextBlock Text="15-02-2025" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+									<TextBlock Text="13:28:49" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+									<TextBlock Text="256" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+									<Grid Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center">
+										<Grid ColumnDefinitions="Auto,Auto">
+											<Image Source="avares://fragment-detection/Assets/delete.png"
+												   Grid.Column="0" Width="40"/>
+											<Image Source="avares://fragment-detection/Assets/info.png"
+												   Grid.Column="1" Width="40"/>
+										</Grid>
+									</Grid>
+								</Grid>
+							</Border>
+
+							<Border BorderBrush="#EEE" BorderThickness="0,1,0,0" Padding="0,10">
+								<Grid ColumnDefinitions="3*,2*,2*,2*,2*" VerticalAlignment="Center">
+									<StackPanel Grid.Column="0" HorizontalAlignment="Center">
+										<Border Width="60" Height="60"
+                                                CornerRadius="8"
+                                                BorderBrush="#CCC"
+                                                BorderThickness="1"
+                                                ClipToBounds="True"
+                                                HorizontalAlignment="Center">
+											<Image Source="avares://fragment-detection/Assets/dummy.png"
+                                                   Stretch="UniformToFill"/>
+										</Border>
+										<TextBlock Text="53-3/BBSPJIKMN/JU-02/2025"
+                                                   FontWeight="Bold"
+                                                   TextWrapping="Wrap"
+                                                   TextAlignment="Center"
+                                                   HorizontalAlignment="Center"
+                                                   MaxWidth="130"
+                                                   Margin="0,8,0,0"/>
+									</StackPanel>
+
+									<TextBlock Text="15-02-2025" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+									<TextBlock Text="11:45:09" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+									<TextBlock Text="301" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+									<Grid Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center">
+										<Grid ColumnDefinitions="Auto,Auto">
+											<Image Source="avares://fragment-detection/Assets/delete.png"
+												   Grid.Column="0" Width="40"/>
+											<Image Source="avares://fragment-detection/Assets/info.png"
+												   Grid.Column="1" Width="40"/>
+										</Grid>
+									</Grid>
+								</Grid>
+							</Border>
+
+							<Border BorderBrush="#EEE" BorderThickness="0,1,0,0" Padding="0,10">
+								<Grid ColumnDefinitions="3*,2*,2*,2*,2*" VerticalAlignment="Center">
+									<StackPanel Grid.Column="0" HorizontalAlignment="Center">
+										<Border Width="60" Height="60"
+                                                CornerRadius="8"
+                                                BorderBrush="#CCC"
+                                                BorderThickness="1"
+                                                ClipToBounds="True"
+                                                HorizontalAlignment="Center">
+											<Image Source="avares://fragment-detection/Assets/dummy.png"
+                                                   Stretch="UniformToFill"/>
+										</Border>
+										<TextBlock Text="52-1/BBSPJIKMN/JU-01/2025"
+                                                   FontWeight="Bold"
+                                                   TextWrapping="Wrap"
+                                                   TextAlignment="Center"
+                                                   HorizontalAlignment="Center"
+                                                   MaxWidth="130"
+                                                   Margin="0,8,0,0"/>
+									</StackPanel>
+
+									<TextBlock Text="14-02-2025" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+									<TextBlock Text="09:12:34" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+									<TextBlock Text="189" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+									<Grid Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center">
+										<Grid ColumnDefinitions="Auto,Auto">
+											<Image Source="avares://fragment-detection/Assets/delete.png"
+												   Grid.Column="0" Width="40"/>
+											<Image Source="avares://fragment-detection/Assets/info.png"
+												   Grid.Column="1" Width="40"/>
+										</Grid>
+									</Grid>
+								</Grid>
+							</Border>
+
+						</StackPanel>
+					</StackPanel>
+				</Border>
+			</StackPanel>
+		</ScrollViewer>
+	</Grid>
+</UserControl>

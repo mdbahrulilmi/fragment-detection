@@ -3,85 +3,39 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:fragment_detection.ViewModels"
+             xmlns:views="clr-namespace:fragment_detection.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="fragment_detection.Views.MainView"
              x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-    <vm:MainViewModel />
-  </Design.DataContext>
+		<vm:MainViewModel />
+	</Design.DataContext>
 
-<Grid>
+	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
-		<Border Padding="20,14" Background="White" BoxShadow="0 0.1 4 1 DarkGray">
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="Auto" />
-				</Grid.ColumnDefinitions>
-				<Grid Grid.Column="0">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto" />
-						<ColumnDefinition Width="Auto" />
-					</Grid.ColumnDefinitions>
-					<Image Width="150" Margin="0"
-						   Source="avares://fragment-detection/Assets/logo-kemenperin.png"
-						   Grid.Column="0"/>
-					<Image Margin="14,0,0,0" Height="40"
-						   Source="avares://fragment-detection/Assets/logo-bbk.png"
-						   Grid.Column="1"/>
-				</Grid>
-				<TextBlock
-				  FontSize="20"
-				  FontWeight="Bold"
-				  Text="Laboratorium Pengujian Kaca"
-				  Grid.Column="0"
-				  Grid.ColumnSpan="3"
-				  VerticalAlignment="Center"
-				  HorizontalAlignment="Center"/>
-				<Grid Grid.Column="2">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="auto"/>
-						<ColumnDefinition Width="auto"/>
-					</Grid.ColumnDefinitions>
-					<Image Source="avares://fragment-detection/Assets/history.png"
-						Grid.Column="0"
-						Height="12"
-						   Margin="4,0"
-						   />
-					<TextBlock
-				  FontSize="14"
-				  Text="Riwayat"
-				  VerticalAlignment="Center"
-				  Grid.Column="1"
-				  HorizontalAlignment="Right"/>
-				</Grid>
-			</Grid>
-		</Border>
+		<views:HeaderView Grid.Row="0" />
 
 		<Grid Grid.Row="1">
-			<Border Height="400" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+			<Border Height="400" VerticalAlignment="Center" HorizontalAlignment="Center">
 				<Grid>
-					
-
 					<Image x:Name="UploadMark" Source="avares://fragment-detection/Assets/plus.png" Width="170" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-					
+
 					<Image x:Name="UploadedImage" Width="350" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="False"/>
 
 					<TextBlock
-						x:Name="UploadText"
-						Text="Tarik atau klik untuk masukkan gambar"
-						VerticalAlignment="Center"
-						HorizontalAlignment="Center"
-						FontSize="16"
-						FontWeight="SemiBold"
-						TextAlignment="Center"/>
-					
+					  x:Name="UploadText"
+					  Text="Tarik atau klik untuk masukkan gambar"
+					  VerticalAlignment="Center"
+					  HorizontalAlignment="Center"
+					  FontSize="16"
+					  FontWeight="SemiBold"
+					  TextAlignment="Center"/>
+
 					<Rectangle x:Name="UploadPlaceholder"
 					  Width="350"
 					  Height="200"
@@ -91,22 +45,22 @@
 					  RadiusY="5"
 					  StrokeDashArray="4,2"
 					  Fill="Transparent"
-					PointerPressed="Rectangle_Clicked"
-							   />
+					  PointerPressed="Rectangle_Clicked" />
 
-					<Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="0">
+					<Grid HorizontalAlignment="Center" VerticalAlignment="Bottom">
 						<Grid.RowDefinitions>
 							<RowDefinition Height="*"/>
 							<RowDefinition Height="Auto"/>
 						</Grid.RowDefinitions>
 
 						<Button
-							HorizontalAlignment="Center"
-							Foreground="White"
-							Background=""
-							Padding="8"
-							Grid.Row="0"
-						>Hitung Fragmen</Button>
+							x:Name="FragmentButton"
+							Click="FragmentButtonClick"
+						  HorizontalAlignment="Center"
+						  Foreground="White"
+						  Background=""
+						  Padding="8"
+						  Grid.Row="0">Hitung Fragmen</Button>
 
 						<Grid Grid.Row="1">
 							<Grid.ColumnDefinitions>
@@ -115,18 +69,17 @@
 							</Grid.ColumnDefinitions>
 
 							<Image Source="avares://fragment-detection/Assets/camera.png"
-								Grid.Column="0"
-								  Width="12"
-								   Margin="0,0,4,0"/>
+							  Grid.Column="0"
+							  Width="12"
+							  Margin="0,0,4,0"/>
 							<TextBlock
-								x:Name="TakePhoto"
-								PointerPressed=""
-								Grid.Column="1"
-								Margin="0,14"
-								FontSize="12"
-								TextAlignment="Center"
-								Text="Ambil Foto Langsung"
-								Foreground="#3B89FF"/>
+							  x:Name="TakePhoto"
+							  Grid.Column="1"
+							  Margin="0,14"
+							  FontSize="12"
+							  TextAlignment="Center"
+							  Text="Ambil Foto Langsung"
+							  Foreground="#3B89FF"/>
 						</Grid>
 					</Grid>
 				</Grid>

@@ -1,0 +1,52 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="fragment_detection.Views.HeaderView">
+	<Border Padding="20,14" Background="White" BoxShadow="0 0.1 4 1 DarkGray">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+
+			<Grid Grid.Column="0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<Image Width="150" Margin="0"
+					   Source="avares://fragment-detection/Assets/logo-kemenperin.png"
+					   Grid.Column="0"/>
+				<Image Margin="14,0,0,0" Height="40"
+					   Source="avares://fragment-detection/Assets/logo-bbk.png"
+					   Grid.Column="1"/>
+			</Grid>
+
+			<TextBlock
+				FontSize="20"
+				FontWeight="Bold"
+				Text="Laboratorium Pengujian Kaca"
+				Grid.Column="0"
+				Grid.ColumnSpan="3"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center"/>
+	
+			<Grid Grid.Column="2">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="auto"/>
+				</Grid.ColumnDefinitions>
+				<Image Source="avares://fragment-detection/Assets/history.png"
+					Grid.Column="0"
+					Height="12"
+					Margin="4,0"/>
+				<TextBlock
+					FontSize="14"
+					Text="Riwayat"
+					VerticalAlignment="Center"
+					Grid.Column="1"
+					HorizontalAlignment="Right"/>
+			</Grid>
+		</Grid>
+	</Border>
+</UserControl>
