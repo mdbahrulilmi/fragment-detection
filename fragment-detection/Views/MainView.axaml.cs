@@ -4,22 +4,61 @@ using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform.Storage;
+using Avalonia.Threading;
 using Avalonia.VisualTree;
+using fragment_detection.Helpers;
+using System;
+using System.Threading.Tasks;
 
 namespace fragment_detection.Views
 {
     public partial class MainView : UserControl
     {
+        private readonly VideoCaptureService _camera = new();
+        private Bitmap? _latestFrame;
+
         public MainView()
         {
             InitializeComponent();
-        }
-        private void Rectangle_Clicked(object sender, PointerPressedEventArgs e)
-        {
-            OpenFileButton_Clicked(sender, e);
+
+            _camera.FrameReceived += bitmap =>
+            {
+                _latestFrame = bitmap;
+                Dispatcher.UIThread.Post(() =>
+                {
+                    CameraFeed.Source = bitmap;
+                });
+            };
         }
 
-        private void FragmentButtonClick(object sender, RoutedEventArgs e)
+        private async void TakePhoto_PointerPressed(object? sender, PointerPressedEventArgs e)
+        {
+            if (TakePhoto.Text == "Ambil Foto Langsung")
+            {
+                UploadedImage.IsVisible = false;
+                UploadMark.IsVisible = false;
+                UploadText.IsVisible = false;
+                UploadPlaceholder.IsVisible = false;
+
+                CameraFeed.IsVisible = true;
+                await _camera.StartAsync();
+                TakePhoto.Text = "Jepret";
+            }
+            else if (TakePhoto.Text == "Jepret")
+            {
+                if (_latestFrame != null)
+                {
+                    UploadedImage.Source = _latestFrame;
+                    UploadedImage.IsVisible = true;
+                    CameraFeed.IsVisible = false;
+                    FragmentButton.Background = new SolidColorBrush(Color.Parse("#3B89FF"));
+                    TakePhoto.Text = "Ambil Foto Langsung";
+                }
+            }
+        }
+
+
+        private async void FragmentButtonClick(object? sender, RoutedEventArgs e)
         {
             if (!UploadedImage.IsVisible)
             {
@@ -34,48 +73,39 @@ namespace fragment_detection.Views
             }
         }
 
+        private void Rectangle_Clicked(object sender, PointerPressedEventArgs e)
+        {
+            OpenFileButton_Clicked(sender, e);
+        }
 
-        private async void OpenFileButton_Clicked(object sender, RoutedEventArgs args)
+        private async void OpenFileButton_Clicked(object? sender, RoutedEventArgs args)
         {
             var topLevel = TopLevel.GetTopLevel(this);
 
             var files = await topLevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
             {
                 Title = "Open Image File",
-                AllowMultiple = true,
+                AllowMultiple = false,
                 FileTypeFilter = new[] { ImageAll }
             });
 
             if (files.Count >= 1)
             {
-                foreach (var file in files)
-                {
-                    await using var stream = await file.OpenReadAsync();
-                    var bitmap = new Bitmap(stream);
+                var file = files[0];
+                await using var stream = await file.OpenReadAsync();
+                var bitmap = new Bitmap(stream);
 
-                    UploadedImage.Source = bitmap;
-                    UploadedImage.IsVisible = true;
+                UploadedImage.Source = bitmap;
+                UploadedImage.IsVisible = true;
 
-                    UploadPlaceholder.IsVisible = false;
-                    UploadMark.IsVisible = false;
-                    UploadText.IsVisible = false;
-                    FragmentButton.Background = new SolidColorBrush(Color.Parse("#3B89FF"));
-                    TakePhoto.Text = "Unggah Foto";
+                CameraFeed.IsVisible = false;
+                await _camera.StopAsync();
 
-                    //string projectDir = AppContext.BaseDirectory;
-                    //string imageDir = Path.Combine(projectDir, "SavedImages");
-                    //Directory.CreateDirectory(imageDir);
+                UploadPlaceholder.IsVisible = false;
+                UploadMark.IsVisible = false;
+                UploadText.IsVisible = false;
 
-                    //string fileExt = Path.GetExtension(file.Name);
-                    //string uniqueName = $"{Guid.NewGuid()}{fileExt}";
-                    //string savePath = Path.Combine(imageDir, uniqueName);
-
-                    //await using var outStream = new FileStream(savePath, FileMode.Create, FileAccess.Write);
-                    //stream.Seek(0, SeekOrigin.Begin);
-                    //await stream.CopyToAsync(outStream);
-
-                    //Debug.WriteLine($"Image saved temporarily: {savePath}");
-                }
+                FragmentButton.Background = new SolidColorBrush(Color.Parse("#3B89FF"));
             }
         }
 

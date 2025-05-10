@@ -10,12 +10,10 @@
 						<ColumnDefinition Width="Auto"/>
 					</Grid.ColumnDefinitions>
 
-					<!-- Gambar -->
 					<Border Grid.Column="0" HorizontalAlignment="Left" Width="450" CornerRadius="15" Margin="0,0,30,0" ClipToBounds="True">
 						<Image Source="avares://fragment-detection/Assets/dummy.png" Stretch="Fill"/>
 					</Border>
 
-					<!-- Informasi -->
 					<Grid Grid.Column="1">
 						<Grid.RowDefinitions>
 							<RowDefinition Height="Auto"/>
@@ -24,7 +22,6 @@
 							<RowDefinition Height="Auto"/>
 						</Grid.RowDefinitions>
 
-						<!-- Nama Hasil Uji -->
 						<Grid Grid.Row="0">
 							<Grid.RowDefinitions>
 								<RowDefinition Height="Auto"/>
@@ -36,7 +33,6 @@
 							</Border>
 						</Grid>
 
-						<!-- Nama Penguji -->
 						<Grid Grid.Row="1" Margin="0,15">
 							<Grid.RowDefinitions>
 								<RowDefinition Height="Auto"/>
@@ -48,14 +44,12 @@
 							</Border>
 						</Grid>
 
-						<!-- Jumlah Fragmen & Waktu -->
 						<Grid Grid.Row="2">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="*"/>
 								<ColumnDefinition Width="Auto"/>
 							</Grid.ColumnDefinitions>
 
-							<!-- Jumlah Fragmen -->
 							<Grid Grid.Column="0">
 								<Grid.RowDefinitions>
 									<RowDefinition Height="Auto"/>
@@ -79,7 +73,6 @@
 								</Grid>
 							</Grid>
 
-							<!-- Tanggal & Waktu -->
 							<Grid Grid.Column="1" Margin="10,0,0,0">
 								<Grid.RowDefinitions>
 									<RowDefinition Height="Auto"/>
