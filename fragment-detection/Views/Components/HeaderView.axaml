@@ -30,7 +30,7 @@
 				Grid.ColumnSpan="3"
 				VerticalAlignment="Center"
 				HorizontalAlignment="Center"/>
-	
+
 			<Grid Grid.Column="2">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="auto"/>
@@ -41,6 +41,8 @@
 					Height="12"
 					Margin="4,0"/>
 				<TextBlock
+					Cursor="Hand"
+					PointerPressed="HistoryButtonClick"
 					FontSize="14"
 					Text="Riwayat"
 					VerticalAlignment="Center"

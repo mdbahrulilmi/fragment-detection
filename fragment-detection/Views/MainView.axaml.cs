@@ -26,19 +26,11 @@ namespace fragment_detection.Views
                 return;
             }
 
-            var resultView = new ResultView();
+            var mainWindow = this.FindAncestorOfType<MainWindow>();
 
-            if (this.Parent is Avalonia.Controls.Window window)
+            if (mainWindow != null)
             {
-                window.Content = resultView;
-            }
-            else
-            {
-                var mainWindow = this.FindAncestorOfType<Avalonia.Controls.Window>();
-                if (mainWindow != null)
-                {
-                    mainWindow.Content = resultView;
-                }
+                mainWindow.Navigate(new ResultView());
             }
         }
 

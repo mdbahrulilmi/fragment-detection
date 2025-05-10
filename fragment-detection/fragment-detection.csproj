@@ -28,7 +28,7 @@
     <Compile Update="Views\DetailView.axaml.cs">
       <DependentUpon>DetailView.axaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\HeaderView.axaml.cs">
+    <Compile Update="Views\Components\HeaderView.axaml.cs">
       <DependentUpon>HeaderView.axaml</DependentUpon>
     </Compile>
   </ItemGroup>

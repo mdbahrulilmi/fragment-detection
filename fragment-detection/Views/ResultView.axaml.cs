@@ -1,6 +1,7 @@
 using System;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.VisualTree;
@@ -11,27 +12,39 @@ public partial class ResultView : UserControl
 {
     public ResultView()
     {
-        AvaloniaXamlLoader.Load(this);
+        InitializeComponent();
+
+        if (DeleteControl != null)
+        {
+            DeleteControl.CancelClicked += (_, __) => DeletePopUp.IsOpen = false;
+            DeleteControl.DeleteClicked += (_, __) =>
+            {
+                DeletePopUp.IsOpen = false;
+            };
+        }
     }
     private void SaveButtonClick(object sender, RoutedEventArgs e)
     {
 
-        var historyView = new HistoryView();
+        var mainWindow = this.FindAncestorOfType<MainWindow>();
 
-        if (this.Parent is Avalonia.Controls.Window window)
+        if (mainWindow != null)
         {
-            window.Content = historyView;
-        }
-        else
-        {
-            var mainWindow = this.FindAncestorOfType<Avalonia.Controls.Window>();
-            if (mainWindow != null)
-            {
-                mainWindow.Content = historyView;
-            }
+            mainWindow.Navigate(new HistoryView());
         }
     }
     private void DeleteButtonClick(object sender, RoutedEventArgs e)
     {
+        DeletePopUp.IsOpen = true;
+    }
+
+    private void BackButtonClick(object sender, PointerPressedEventArgs e)
+    {
+        var mainWindow = this.FindAncestorOfType<MainWindow>();
+
+        if (mainWindow != null)
+        {
+            mainWindow.GoBack();
+        }
     }
 }

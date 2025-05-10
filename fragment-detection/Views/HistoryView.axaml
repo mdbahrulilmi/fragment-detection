@@ -14,14 +14,19 @@
 
 		<local:HeaderView Grid.Row="0"/>
 
+		<Popup Grid.Row="1" x:Name="DeletePopUp" Placement="Center" IsOpen="False">
+			<local:Delete x:Name="DeleteControl"/>
+		</Popup>
+		
+
 		<ScrollViewer Grid.Row="1" Padding="40">
 			<StackPanel Spacing="24">
-				<Button Content="← Kembali"
+				<TextBlock Text="← Kembali"
                         Width="110"
-                        Padding="8,4"
-                        Background="White"
-                        BorderBrush="#C0C0C0"
-                        Foreground="#333"/>
+						  HorizontalAlignment="Left"
+                        Foreground="#333"
+						   Cursor="Hand"
+						   PointerPressed="BackButtonClick"/>
 
 				<TextBlock Text="Riwayat Pengujian"
                            FontSize="24"
@@ -39,8 +44,10 @@
 									   HorizontalAlignment="Center"/>
 							<TextBlock Text="Tanggal" Grid.Column="1" FontWeight="Bold" HorizontalAlignment="Center"/>
 							<TextBlock Text="Waktu" Grid.Column="2" FontWeight="Bold" HorizontalAlignment="Center"/>
-							<TextBlock Text="Jumlah Fragmen" Grid.Column="3" FontWeight="Bold" HorizontalAlignment="Right"/>
-						</Grid>
+							<TextBlock Text="Jumlah Fragmen" Grid.Column="3" FontWeight="Bold" HorizontalAlignment="Center" TextAlignment="Center"/>
+								<TextBlock Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
+
+							</Grid>
 
 						<StackPanel Spacing="8">
 
@@ -70,9 +77,11 @@
 									<TextBlock Text="256" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 									<Grid Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center">
 										<Grid ColumnDefinitions="Auto,Auto">
-											<Image Source="avares://fragment-detection/Assets/delete.png"
+											<Image 
+												Cursor="Hand" PointerPressed="DeleteButtonClick" Source="avares://fragment-detection/Assets/delete.png"
 												   Grid.Column="0" Width="40"/>
-											<Image Source="avares://fragment-detection/Assets/info.png"
+											<Image 
+												Cursor="Hand" PointerPressed="InfoButtonClick" Source="avares://fragment-detection/Assets/info.png"
 												   Grid.Column="1" Width="40"/>
 										</Grid>
 									</Grid>

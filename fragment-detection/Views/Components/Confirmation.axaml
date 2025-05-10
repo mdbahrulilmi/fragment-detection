@@ -1,0 +1,59 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 mc:Ignorable="d"
+			 x:Class="fragment_detection.Views.Confirmation"
+			 d:DesignWidth="800" d:DesignHeight="600">
+
+	<Border CornerRadius="12" Background="White" Padding="20"
+			Height="150" Width="500">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<TextBlock Text="Yakin ingin menyimpan?"
+					   FontSize="20"
+					   FontWeight="SemiBold"
+					   HorizontalAlignment="Center"
+					   VerticalAlignment="Center"
+					   Grid.Row="0" />
+
+			<Grid Grid.Row="1" Margin="0,20,0,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<Button Content="Batal"
+						Width="90"
+						Height="40"
+						HorizontalAlignment="Left"
+						Grid.Column="0"
+						BorderBrush="#A0A0A0"
+						BorderThickness="1"
+						Background="White"
+						CornerRadius="5"
+						Click="OnCancelClick">
+					<TextBlock TextAlignment="Center"
+							   FontWeight="Medium" VerticalAlignment="Center" FontSize="20"   Foreground="#1A1A1A" Text="Batal"/>
+				</Button>
+
+				<Button Content="Simpan"
+						Width="90"
+						Height="40"
+						HorizontalAlignment="Right"
+						Grid.Column="1"
+						BorderBrush="#3B89FF"
+						BorderThickness="1"
+						Background="White"
+						CornerRadius="5"
+						Click="OnSaveClick">
+					<TextBlock TextAlignment="Center" 
+							   FontWeight="Medium" VerticalAlignment="Center" FontSize="20"   Foreground="#3B89FF" Text="Simpan"/>
+				</Button>
+			</Grid>
+		</Grid>
+	</Border>
+</UserControl>

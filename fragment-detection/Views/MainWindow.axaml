@@ -8,5 +8,6 @@
         x:Class="fragment_detection.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="fragment_detection">
-        <views:MainView />
+    	<ContentControl x:Name="MainContent"/>
+
 </Window>

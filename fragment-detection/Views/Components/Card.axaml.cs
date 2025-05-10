@@ -8,6 +8,6 @@ public partial class Card : UserControl
 {
     public Card()
     {
-        AvaloniaXamlLoader.Load(this);
+        InitializeComponent();
     }
 }
