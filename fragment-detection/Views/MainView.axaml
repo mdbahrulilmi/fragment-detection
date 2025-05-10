@@ -19,17 +19,14 @@
 		<Grid Grid.Row="1">
 			<Border Height="400" VerticalAlignment="Center" HorizontalAlignment="Center">
 				<Grid>
-					<!-- Ukuran semua elemen gambar disamakan -->
 					<Image x:Name="CameraFeed"
                            Width="350" Height="200"
-                           Stretch="UniformToFill"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            IsVisible="False"/>
 
 					<Image x:Name="UploadedImage"
                            Width="350" Height="200"
-                           Stretch="UniformToFill"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            IsVisible="False"/>

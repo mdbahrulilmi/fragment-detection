@@ -63,12 +63,14 @@
 										<ColumnDefinition Width="Auto"/>
 										<ColumnDefinition Width="*"/>
 									</Grid.ColumnDefinitions>
-									<Button Grid.Column="0" Width="15" Height="15" Background="White" VerticalAlignment="Center" Padding="0" Foreground="Black">
-										<TextBlock TextAlignment="Center" VerticalAlignment="Center" FontSize="20">-</TextBlock>
+									<Button Grid.Column="0" Width="15" Height="15" Background="White" VerticalAlignment="Center" Padding="0" Foreground="Black" HorizontalAlignment="Center">
+										<TextBlock TextAlignment="Center" VerticalAlignment="Center" FontSize="20" HorizontalAlignment="Center"
+												   Margin="0" Padding="0">-</TextBlock>
 									</Button>
 									<TextBlock Grid.Column="1" FontSize="25" FontWeight="Bold" Margin="7,0" VerticalAlignment="Center" Text="265"/>
-									<Button Grid.Column="2" Width="15" Height="15" Background="White" VerticalAlignment="Center" Padding="0" Foreground="Black">
-										<TextBlock TextAlignment="Center" VerticalAlignment="Center" FontSize="20">+</TextBlock>
+									<Button Grid.Column="2" Width="15" Height="15" Background="White" VerticalAlignment="Center" Padding="0" Foreground="Black" HorizontalAlignment="Center">
+										<TextBlock TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" 
+												   Margin="0" Padding="0" FontSize="20">+</TextBlock>
 									</Button>
 								</Grid>
 							</Grid>
