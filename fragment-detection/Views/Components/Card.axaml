@@ -1,6 +1,12 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="fragment_detection.Views.Card">
+             x:Class="fragment_detection.Views.Card"
+			  xmlns:vm="clr-namespace:fragment_detection.ViewModels;assembly=fragment-detection">
+
+	<UserControl.DataContext>
+		<vm:ResultViewModel/>
+	</UserControl.DataContext>
+	
 	<Border Height="400" VerticalAlignment="Center" HorizontalAlignment="Center">
 		<Grid>
 			<Border Background="#F0F0F0" Height="300" Width="750" CornerRadius="15" Padding="30">
@@ -10,7 +16,7 @@
 						<ColumnDefinition Width="Auto"/>
 					</Grid.ColumnDefinitions>
 
-					<Border Grid.Column="0" HorizontalAlignment="Left" Width="450" CornerRadius="15" Margin="0,0,30,0" ClipToBounds="True">
+					<Border Grid.Column="0" HorizontalAlignment="Left" Width="445" CornerRadius="15" Margin="0,0,30,0" ClipToBounds="True">
 						<Image Source="avares://fragment-detection/Assets/dummy.png" Stretch="Fill"/>
 					</Border>
 
@@ -28,9 +34,8 @@
 								<RowDefinition Height="Auto"/>
 							</Grid.RowDefinitions>
 							<TextBlock Margin="0,4" FontSize="11" Text="Nama Hasil Uji"/>
-							<Border Grid.Row="1" BorderBrush="#A0A0A0" Padding="5" BorderThickness="1" CornerRadius="2">
-								<TextBlock FontWeight="Bold" Text="54-3/BBSPJIKMN/JU-02/2025"/>
-							</Border>
+
+							<TextBox Grid.Row="2" FontWeight="Bold" Text="54-3/BBSPJIKMN/JU-02/2025" BorderBrush="#A0A0A0" CornerRadius="2" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Width="230"/>
 						</Grid>
 
 						<Grid Grid.Row="1" Margin="0,15">
@@ -39,9 +44,7 @@
 								<RowDefinition Height="Auto"/>
 							</Grid.RowDefinitions>
 							<TextBlock Margin="0,4" FontSize="11" Text="Nama Penguji"/>
-							<Border Grid.Row="1" BorderBrush="#A0A0A0" Padding="5" BorderThickness="1" CornerRadius="2">
-								<TextBlock FontWeight="Bold" Text="Muhamad Naufal El Ghani"/>
-							</Border>
+							<TextBox Grid.Row="2" FontWeight="Bold" Text="Naufal El Ghani" BorderBrush="#A0A0A0" CornerRadius="2" Width="230" ScrollViewer.HorizontalScrollBarVisibility="Hidden"/>
 						</Grid>
 
 						<Grid Grid.Row="2">
@@ -63,14 +66,17 @@
 										<ColumnDefinition Width="Auto"/>
 										<ColumnDefinition Width="*"/>
 									</Grid.ColumnDefinitions>
-									<Button Grid.Column="0" Width="15" Height="15" Background="White" VerticalAlignment="Center" Padding="0" Foreground="Black" HorizontalAlignment="Center">
+
+									<Button Grid.Column="0" Width="20" Height="20" Background="White" VerticalAlignment="Center" Padding="0" Foreground="Black" HorizontalAlignment="Center" Command="{Binding DecrementCommand}">
 										<TextBlock TextAlignment="Center" VerticalAlignment="Center" FontSize="20" HorizontalAlignment="Center"
-												   Margin="0" Padding="0">-</TextBlock>
+                                                   Margin="0" Padding="0">-</TextBlock>
 									</Button>
-									<TextBlock Grid.Column="1" FontSize="25" FontWeight="Bold" Margin="7,0" VerticalAlignment="Center" Text="265"/>
-									<Button Grid.Column="2" Width="15" Height="15" Background="White" VerticalAlignment="Center" Padding="0" Foreground="Black" HorizontalAlignment="Center">
-										<TextBlock TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" 
-												   Margin="0" Padding="0" FontSize="20">+</TextBlock>
+
+									<TextBlock Grid.Column="1" FontSize="25" FontWeight="Bold" Margin="7,0" VerticalAlignment="Center" Text="{Binding JumlahFragmen}" HorizontalAlignment="Center"/>
+
+									<Button Grid.Column="2" Width="20" Height="20" Background="White" VerticalAlignment="Center" Padding="0" Foreground="Black" HorizontalAlignment="Center" Command="{Binding IncrementCommand}">
+										<TextBlock TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                   Margin="0" Padding="0" FontSize="20">+</TextBlock>
 									</Button>
 								</Grid>
 							</Grid>

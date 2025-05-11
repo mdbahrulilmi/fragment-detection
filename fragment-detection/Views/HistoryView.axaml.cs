@@ -15,13 +15,12 @@ public partial class HistoryView : UserControl
     public HistoryView()
     {
         InitializeComponent();
-
+        Table.DeleteRequested += Table_DeleteRequested;
         if (DeleteControl != null)
         {
             DeleteControl.CancelClicked += (_, __) => DeletePopUp.IsOpen = false;
             DeleteControl.DeleteClicked += (_, __) =>
             {
-                // TODO: delete logic here
                 DeletePopUp.IsOpen = false;
             };
         }
@@ -36,16 +35,8 @@ public partial class HistoryView : UserControl
             mainWindow.GoBack(); 
         }
     }
-    private void InfoButtonClick(object sender, PointerPressedEventArgs e)
-    {
-        var mainWindow = this.FindAncestorOfType<MainWindow>();
 
-        if (mainWindow != null)
-        {
-            mainWindow.Navigate(new DetailView());
-        }
-    }
-    private void DeleteButtonClick(object sender, PointerPressedEventArgs e)
+    private void Table_DeleteRequested(object? sender, EventArgs e)
     {
         DeletePopUp.IsOpen = true;
     }

@@ -13,7 +13,7 @@ public partial class ResultView : UserControl
     public ResultView()
     {
         InitializeComponent();
-
+        Table.DeleteRequested += Table_DeleteRequested;
         if (DeleteControl != null)
         {
             DeleteControl.CancelClicked += (_, __) => DeletePopUp.IsOpen = false;
@@ -37,7 +37,19 @@ public partial class ResultView : UserControl
     {
         DeletePopUp.IsOpen = true;
     }
+    private void Table_DeleteRequested(object? sender, EventArgs e)
+    {
+        DeletePopUp.IsOpen = true;
+    }
+    private void InfoButtonClick(object sender, PointerPressedEventArgs e)
+    {
+        var mainWindow = this.FindAncestorOfType<MainWindow>();
 
+        if (mainWindow != null)
+        {
+            mainWindow.Navigate(new DetailView());
+        }
+    }
     private void BackButtonClick(object sender, PointerPressedEventArgs e)
     {
         var mainWindow = this.FindAncestorOfType<MainWindow>();
