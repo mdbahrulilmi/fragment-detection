@@ -4,9 +4,9 @@
 			  xmlns:vm="clr-namespace:fragment_detection.ViewModels;assembly=fragment-detection">
 
 	<UserControl.DataContext>
-		<vm:ResultViewModel/>
+		<vm:CardViewModel/>
 	</UserControl.DataContext>
-	
+
 	<Border Height="400" VerticalAlignment="Center" HorizontalAlignment="Center">
 		<Grid>
 			<Border Background="#F0F0F0" Height="300" Width="750" CornerRadius="15" Padding="30">

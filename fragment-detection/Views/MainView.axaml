@@ -60,7 +60,6 @@
 
 						<Button Cursor="Hand"
                                 x:Name="FragmentButton"
-								Command="{Binding HitungFragmenCommand}"
                                 Click="FragmentButtonClick"
                                 HorizontalAlignment="Center"
                                 Foreground="White"

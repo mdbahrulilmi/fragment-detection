@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -10,10 +10,13 @@ namespace fragment_detection.Views;
 
 public partial class ResultView : UserControl
 {
+    private int currentIndex = 0;
+
     public ResultView()
     {
         InitializeComponent();
-        Table.DeleteRequested += Table_DeleteRequested;
+        this.AttachedToVisualTree += (_, __) => UpdateArrowVisibility();
+
         if (DeleteControl != null)
         {
             DeleteControl.CancelClicked += (_, __) => DeletePopUp.IsOpen = false;
@@ -37,19 +40,7 @@ public partial class ResultView : UserControl
     {
         DeletePopUp.IsOpen = true;
     }
-    private void Table_DeleteRequested(object? sender, EventArgs e)
-    {
-        DeletePopUp.IsOpen = true;
-    }
-    private void InfoButtonClick(object sender, PointerPressedEventArgs e)
-    {
-        var mainWindow = this.FindAncestorOfType<MainWindow>();
 
-        if (mainWindow != null)
-        {
-            mainWindow.Navigate(new DetailView());
-        }
-    }
     private void BackButtonClick(object sender, PointerPressedEventArgs e)
     {
         var mainWindow = this.FindAncestorOfType<MainWindow>();
@@ -58,5 +49,38 @@ public partial class ResultView : UserControl
         {
             mainWindow.GoBack();
         }
+    }
+
+    public void Next(object source, RoutedEventArgs args)
+    {
+        int totalSlides = slides.ItemCount;
+
+        if (currentIndex < totalSlides - 1)
+        {
+            currentIndex++;
+            slides.Next();
+            UpdateArrowVisibility();
+        }
+    }
+
+    public void Previous(object source, RoutedEventArgs args)
+    {
+        if (currentIndex > 0)
+        {
+            currentIndex--;
+            slides.Previous();
+            UpdateArrowVisibility();
+        }
+    }
+
+    private void UpdateArrowVisibility()
+    {
+        var leftArrow = this.FindControl<Button>("LeftArrow");
+        var rightArrow = this.FindControl<Button>("RightArrow");
+
+        int totalSlides = slides.ItemCount;
+
+        leftArrow.IsVisible = currentIndex > 0;
+        rightArrow.IsVisible = currentIndex < totalSlides - 1;
     }
 }
