@@ -43,7 +43,8 @@ namespace fragment_detection.Views
                 CameraFeed.IsVisible = true;
                 await _camera.StartAsync();
                 TakePhoto.Text = "Jepret";
-            }
+
+                BackButton.IsVisible = true;            }
             else if (TakePhoto.Text == "Jepret")
             {
                 if (_latestFrame != null)
@@ -55,6 +56,19 @@ namespace fragment_detection.Views
                     TakePhoto.Text = "Ambil Foto Langsung";
                 }
             }
+        }
+
+        private void BackButtonClick(object? sender, PointerPressedEventArgs e)
+        {
+            UploadPlaceholder.IsVisible = true;
+            UploadMark.IsVisible = true;
+            UploadText.IsVisible = true;
+            CameraFeed.IsVisible = false;
+            UploadedImage.IsVisible = false;
+            TakePhoto.Text = "Ambil Foto Langsung";
+
+            _camera.StopAsync();
+            BackButton.IsVisible = false;
         }
 
 

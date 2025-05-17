@@ -38,6 +38,16 @@ namespace fragment_detection.Views
                 mainWindow.GoBack();
             }
         }
+        private void SaveButtonClick(object sender, RoutedEventArgs e)
+        {
+
+            var mainWindow = this.FindAncestorOfType<MainWindow>();
+
+            if (mainWindow != null)
+            {
+                mainWindow.Navigate(new HistoryView());
+            }
+        }
     }
 }
     
