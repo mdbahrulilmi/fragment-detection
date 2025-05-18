@@ -20,7 +20,7 @@ namespace fragment_detection.Views
         private readonly VideoCaptureService _camera = new();
         private Bitmap? _latestFrame;
 
-        public ObservableCollection<CardViewModel> Cards { get; } = new();
+        public ObservableCollection<CardViewModel> Cards => CardService.Instance.Cards;
 
         public MainView()
         {
@@ -143,17 +143,12 @@ namespace fragment_detection.Views
             BackButton.IsVisible = false;
         }
 
-        private async void FragmentButtonClick(object? sender, RoutedEventArgs e)
+        private void FragmentButtonClick(object? sender, RoutedEventArgs e)
         {
-            if (Cards.Count == 0)
+            if (CardService.Instance.Cards.Count == 0)
                 return;
 
-            var viewModel = new ResultViewModel(Cards);
-            var resultView = new ResultView
-            {
-                DataContext = viewModel
-            };
-
+            var resultView = new ResultView();
             var mainWindow = this.FindAncestorOfType<MainWindow>();
             mainWindow?.Navigate(resultView);
         }

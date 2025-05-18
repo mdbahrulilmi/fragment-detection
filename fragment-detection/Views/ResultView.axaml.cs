@@ -1,22 +1,25 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.VisualTree;
+using fragment_detection.ViewModels;
 
 namespace fragment_detection.Views;
 
 public partial class ResultView : UserControl
 {
     private int currentIndex = 0;
-
+    public ObservableCollection<CardViewModel> Cards { get; }
     public ResultView()
     {
         InitializeComponent();
         this.AttachedToVisualTree += (_, __) => UpdateArrowVisibility();
-
+        Cards = CardService.Instance.Cards;
+        DataContext = this;
         if (DeleteControl != null)
         {
             DeleteControl.CancelClicked += (_, __) => DeletePopUp.IsOpen = false;

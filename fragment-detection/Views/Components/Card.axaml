@@ -18,8 +18,7 @@
 
 					<Border Grid.Column="0" HorizontalAlignment="Left" Width="445" CornerRadius="15" Margin="0,0,30,0" ClipToBounds="True">
 						<StackPanel>
-							<Image Source="{Binding Image}" Width="200" Height="200"/>
-							<TextBlock Text="{Binding JumlahFragmen, StringFormat='Jumlah Fragmen: {0}'}"/>
+							<Image Source="{Binding Image}" MaxWidth="680" Height="220"/>
 						</StackPanel>
 
 					</Border>

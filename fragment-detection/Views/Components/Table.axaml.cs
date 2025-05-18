@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.VisualTree;
+using fragment_detection.ViewModels;
 using fragment_detection.Views;
 using System;
 
@@ -28,12 +29,26 @@ namespace fragment_detection.Views
         private void InfoButtonClick(object sender, PointerPressedEventArgs e)
         {
             var mainWindow = this.FindAncestorOfType<MainWindow>();
+            if (mainWindow == null) return;
 
-            if (mainWindow != null)
+            if (sender is Image img && img.DataContext is CardViewModel card)
             {
-                mainWindow.Navigate(new DetailView());
+                var detailVM = new DetailViewModel
+                {
+                    SelectedCard = card,
+                    Cards = CardService.Instance.Cards 
+                };
+
+                var detailView = new DetailView
+                {
+                    DataContext = detailVM
+                };
+
+                mainWindow.Navigate(detailView);
             }
         }
+
+
         private void DeleteButtonClick(object sender, PointerPressedEventArgs e)
         {
             DeleteRequested?.Invoke(this, EventArgs.Empty);

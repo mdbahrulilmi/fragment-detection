@@ -9,7 +9,7 @@ namespace fragment_detection.ViewModels
     {
         public Bitmap Image { get; set; } = default!;
         public string FileName { get; set; } = string.Empty;
-
+        public int Index { get; set; }
         private int _jumlahFragmen;
 
         public int JumlahFragmen

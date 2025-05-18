@@ -14,10 +14,12 @@ namespace fragment_detection.Views;
 public partial class HistoryView : UserControl
 {
 
+    public ObservableCollection<CardViewModel> Cards { get; }
 
     public HistoryView()
     {
         InitializeComponent();
+        Cards = CardService.Instance.Cards;
         DataContext = this;
         Table.DeleteRequested += Table_DeleteRequested;
         if (DeleteControl != null)
