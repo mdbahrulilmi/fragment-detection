@@ -1,29 +1,29 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="clr-namespace:fragment_detection.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:fragment_detection.Views"
              x:Class="fragment_detection.Views.MainView">
 
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
-		</Grid.RowDefinitions>
-		
-		<views:HeaderView Grid.Row="0" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
+        <views:HeaderView Grid.Row="0" />
+		<TextBlock x:Name="textdebug"/>
 		<Grid Grid.Row="1">
-		   
 			<TextBlock x:Name="BackButton"
-           Text="← Kembali"
-           HorizontalAlignment="Left"
-           Margin="40,40,0,10"
-           Foreground="#333"
-           FontSize="14"
-           Cursor="Hand"
-           PointerPressed="BackButtonClick"
-           IsVisible="False"/>
-
+                       Text="← Kembali"
+                       HorizontalAlignment="Left"
+                       Margin="40,40,0,10"
+                       Foreground="#333"
+                       FontSize="14"
+                       Cursor="Hand"
+                       PointerPressed="BackButtonClick"
+                       IsVisible="False"/>
+			<TextBlock x:Name="WidthTextBlock"/>
 			<Border Height="400" VerticalAlignment="Center" HorizontalAlignment="Center">
 				<Grid>
 					<Image x:Name="CameraFeed"
@@ -31,39 +31,80 @@
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            IsVisible="False"/>
+					<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="350"/>
+						</Grid.ColumnDefinitions>
 
-					<Image x:Name="UploadedImage"
-                           Width="350" Height="200"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           IsVisible="False"/>
+						<ScrollViewer Grid.Column="0"
+									  HorizontalScrollBarVisibility="Auto"
+									  VerticalScrollBarVisibility="Disabled"
+									  Height="200"
+									  x:Name="ImagesScrollViewer"
+									  MaxWidth="{Binding ElementName=WidthTextBlock, Path=ActualWidth}">
+							<ItemsControl x:Name="UploadedImagesControl"
+              ItemsSource="{Binding Cards}">
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<StackPanel Orientation="Horizontal"/>
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<StackPanel Margin="5" MinWidth="200" Height="200">
+											<Image Source="{Binding Image}"
+												   MinWidth="200"
+												   Height="160"/>
+											<Button Content="X"
+												Foreground="Red"
+												HorizontalAlignment="Center"
+												Cursor="Hand"
+												Click="DeleteImage_Click"
+												Background="Transparent"
+												BorderThickness="0"
+												Padding="0"/>
 
-					<Image x:Name="UploadMark"
-                           Source="avares://fragment-detection/Assets/plus.png"
-                           Width="170"
-                           Height="170"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"/>
+										</StackPanel>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+							</ItemsControl>
+						</ScrollViewer>
 
-					<TextBlock x:Name="UploadText"
-                               Text="Tarik atau klik untuk masukkan gambar"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               FontSize="16"
-                               FontWeight="SemiBold"
-                               TextAlignment="Center"/>
+						<Grid Grid.Column="1"
+							  MinWidth="200"
+							  MaxWidth="350"
+							  Height="200"
+							  Margin="20,0,0,0"
+							  VerticalAlignment="Center">
 
-					<Rectangle x:Name="UploadPlaceholder"
-                               Width="350" Height="200"
-                               Stroke="#3B89FF"
-                               StrokeThickness="1.6"
-                               RadiusX="5" RadiusY="5"
-                               StrokeDashArray="4,2"
-                               Fill="Transparent"
-                               PointerPressed="Rectangle_Clicked"
-                               ClipToBounds="True"/>
+							<Image x:Name="UploadMark"
+								   Source="avares://fragment-detection/Assets/plus.png"
+								   Width="170"
+								   Height="170"
+								   HorizontalAlignment="Center"
+								   VerticalAlignment="Center"/>
+							<TextBlock x:Name="UploadText"
+									   Text="Tarik atau klik untuk masukkan gambar"
+									   VerticalAlignment="Center"
+									   HorizontalAlignment="Center"
+									   FontSize="16"
+									   FontWeight="SemiBold"
+									   TextAlignment="Center"/>
+							<Rectangle x:Name="UploadPlaceholder"
+									   Stroke="#3B89FF"
+									   StrokeThickness="1.6"
+									   RadiusX="5" RadiusY="5"
+									   StrokeDashArray="4,2"
+									   Fill="Transparent"
+									   PointerPressed="Rectangle_Clicked"
+									   ClipToBounds="True"
+									   IsHitTestVisible="True"/>
+						</Grid>
+					</Grid>
 
-					<Grid HorizontalAlignment="Center" VerticalAlignment="Bottom">
+
+					<Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,20,0,0">
 						<Grid.RowDefinitions>
 							<RowDefinition Height="*"/>
 							<RowDefinition Height="Auto"/>
@@ -103,7 +144,6 @@
 					</Grid>
 				</Grid>
 			</Border>
-			
 		</Grid>
-	</Grid>
+    </Grid>
 </UserControl>

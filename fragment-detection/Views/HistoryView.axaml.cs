@@ -1,4 +1,5 @@
 using System;
+using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -12,9 +13,12 @@ namespace fragment_detection.Views;
 
 public partial class HistoryView : UserControl
 {
+
+
     public HistoryView()
     {
         InitializeComponent();
+        DataContext = this;
         Table.DeleteRequested += Table_DeleteRequested;
         if (DeleteControl != null)
         {
@@ -22,8 +26,9 @@ public partial class HistoryView : UserControl
             DeleteControl.DeleteClicked += (_, __) =>
             {
                 DeletePopUp.IsOpen = false;
-            };
+            }; 
         }
+
     }
 
     private void BackButtonClick(object sender, PointerPressedEventArgs e)
@@ -32,7 +37,7 @@ public partial class HistoryView : UserControl
 
         if (mainWindow != null)
         {
-            mainWindow.GoBack(); 
+            mainWindow.GoBack();
         }
     }
 

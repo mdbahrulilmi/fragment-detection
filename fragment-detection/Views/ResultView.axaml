@@ -35,18 +35,20 @@
 
 
 			<Panel Height="400" Grid.Row="1" Margin="0, -20, 0, -20">
-				<Carousel Name="slides" >
-					<Carousel.PageTransition >
+				<Carousel Name="slides"
+          ItemsSource="{Binding Cards}">
+					<Carousel.PageTransition>
 						<CompositePageTransition>
 							<PageSlide Duration="0:00:00.100" Orientation="Horizontal" />
 						</CompositePageTransition>
 					</Carousel.PageTransition>
-					<Carousel.Items>
-						<local:Card HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-20,0,0"/>
-						<local:Card Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-20,0,0"/>
-						<local:Card Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-20,0,0"/>
-					</Carousel.Items>
+					<Carousel.ItemTemplate>
+						<DataTemplate>
+							<local:Card DataContext="{Binding}" />
+						</DataTemplate>
+					</Carousel.ItemTemplate>
 				</Carousel>
+
 				<Panel Margin="20" Height="50">
 					<Button x:Name="LeftArrow" Background="Transparent" Click="Previous">
 						<Image Source="avares://fragment-detection/Assets/arrow_left.png"/>

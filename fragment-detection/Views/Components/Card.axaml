@@ -17,7 +17,11 @@
 					</Grid.ColumnDefinitions>
 
 					<Border Grid.Column="0" HorizontalAlignment="Left" Width="445" CornerRadius="15" Margin="0,0,30,0" ClipToBounds="True">
-						<Image Source="avares://fragment-detection/Assets/dummy.png" Stretch="Fill"/>
+						<StackPanel>
+							<Image Source="{Binding Image}" Width="200" Height="200"/>
+							<TextBlock Text="{Binding JumlahFragmen, StringFormat='Jumlah Fragmen: {0}'}"/>
+						</StackPanel>
+
 					</Border>
 
 					<Grid Grid.Column="1">

@@ -9,6 +9,8 @@ namespace fragment_detection.Helpers
 {
     public class VideoCaptureService
     {
+        public event Action? CameraStarted;
+        public event Action? CameraStopped;
         private CaptureDevice? _device;
 
         public event Action<Bitmap>? FrameReceived;
@@ -40,16 +42,20 @@ namespace fragment_detection.Helpers
                     }
                 });
 
-            await _device.StartAsync(); 
+            await _device.StartAsync();
+
+            CameraStarted?.Invoke();
         }
 
         public async Task StopAsync()
         {
-            if (_device is not null)
+            if (_device != null)
             {
-                await _device.StopAsync(); 
-                _device.Dispose();         
+                await _device.StopAsync();
+                _device.Dispose();
                 _device = null;
+
+                CameraStopped?.Invoke();
             }
         }
     }

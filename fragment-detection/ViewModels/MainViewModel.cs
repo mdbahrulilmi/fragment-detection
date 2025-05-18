@@ -2,12 +2,14 @@
 using fragment_detection.Helpers;
 using ReactiveUI;
 using System;
+using System.Collections.ObjectModel;
 using System.Reactive;
 
 namespace fragment_detection.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
+    public ObservableCollection<Bitmap> UploadedImages { get; } = new();
     private readonly VideoCaptureService _videoCapture = new();
     private Bitmap? _currentFrame;
 

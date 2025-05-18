@@ -1,11 +1,15 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Input;
+using Avalonia.Media.Imaging;
 
 namespace fragment_detection.ViewModels
 {
     public class CardViewModel : INotifyPropertyChanged
     {
+        public Bitmap Image { get; set; } = default!;
+        public string FileName { get; set; } = string.Empty;
+
         private int _jumlahFragmen;
 
         public int JumlahFragmen
