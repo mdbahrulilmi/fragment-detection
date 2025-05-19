@@ -66,6 +66,7 @@
 						</ItemsControl.ItemTemplate>
 					</ItemsControl>
 					</ScrollViewer>
+					<Border Background="Transparent" Height="100"></Border>
 				</StackPanel>
 			</StackPanel>
 		</Border>
