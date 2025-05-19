@@ -21,8 +21,8 @@
 					<TextBlock Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
 
 				</Grid>
-
 				<StackPanel Spacing="8">
+				<ScrollViewer VerticalScrollBarVisibility="Auto">
 					<ItemsControl ItemsSource="{Binding Cards}">
 						<ItemsControl.ItemTemplate>
 							<DataTemplate>
@@ -65,7 +65,7 @@
 							</DataTemplate>
 						</ItemsControl.ItemTemplate>
 					</ItemsControl>
-
+					</ScrollViewer>
 				</StackPanel>
 			</StackPanel>
 		</Border>

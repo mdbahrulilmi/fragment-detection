@@ -120,8 +120,9 @@ namespace fragment_detection.Views
                     
                     UploadedImagesControl.IsVisible = true;
                     CameraFeed.IsVisible = false;
-                    FragmentButton.Background = new SolidColorBrush(Color.Parse("#3B89FF"));
                     TakePhoto.Text = "Ambil Foto Langsung";
+                    await _camera.StopAsync();
+                    FragmentButton.Background = new SolidColorBrush(Color.Parse("#3B89FF"));
                     Dispatcher.UIThread.Post(() =>
                     {
                         ImagesScrollViewer?.ScrollToEnd();

@@ -39,7 +39,7 @@ public partial class HistoryView : UserControl
 
         if (mainWindow != null)
         {
-            mainWindow.GoBack();
+            mainWindow.Navigate(new MainView());
         }
     }
 
