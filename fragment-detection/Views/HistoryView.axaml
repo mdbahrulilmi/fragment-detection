@@ -21,7 +21,7 @@
 
 		<ScrollViewer Grid.Row="1" Padding="40">
 			<StackPanel Spacing="24">
-				<TextBlock Text="← Kembali"
+				<TextBlock Text="← Beranda"
                         Width="110"
 						  HorizontalAlignment="Left"
                         Foreground="#333"
